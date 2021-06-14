@@ -1,0 +1,30 @@
+app: unicom-Task
+component: scf
+inputs:
+  cls:
+    logsetId: e760b6a9-370c-4ff4-ad97-6996a15ce955
+    topicId: d4719020-16a9-4c5d-a844-1a11a7b13085
+  description: 联通营业厅任务脚本
+  eip: false
+  enableRoleAuth: true
+  events:
+    - timer:
+        name: timer-task
+        parameters:
+          cronExpression: 0 30 6 * * * *
+          enable: true
+          qualifier: $DEFAULT
+  handler: index.main_handler
+  memorySize: 128
+  name: unicom-Task
+  namespace: default
+  publicAccess: true
+  region: ap-guangzhou
+  runtime: Python3.6
+  src: ./src
+  timeout: 900
+name: ap-guangzhou_default_unicom-Task
+org: '1257293866'
+stage: dev
+# When using this configuration file for deployment, make sure the file name is "serverless.yml".
+# For more information: https://github.com/serverless-components/tencent-scf/blob/master/docs/configure.md
