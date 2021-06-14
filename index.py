@@ -421,7 +421,7 @@ def autoKingCardWelfare(upgradeType):
             logging.error('【王卡福利续约】: 错误, ' + stat['msgStr'])
 
 #腾讯云函数入口
-def main(event, context):
+def main_handler(event, context):
     users = readJson()
     for user in users:
         #清空上一个用户的日志记录
@@ -461,4 +461,4 @@ def main(event, context):
 
 #主函数入口
 if __name__ == '__main__':
-    main("","")
+    main_handler("","")
