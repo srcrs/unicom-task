@@ -15,7 +15,7 @@ unzip lxml.zip
 
 #安装云函数需要的依赖库到severless文件夹
 echo "开始安装所需模块"
-pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -r ./requirements.txt -t ./
+pip3 install -r ./requirements.txt -t ./
 
 #部署至腾讯云函数
 #腾讯云函数貌似只有 /tmp 目录能够临时存取文件
@@ -23,7 +23,7 @@ sed -i "s/.\/log.txt/..\/..\/tmp\/log.txt/g" ./login.py
 sed -i "s/.\/log.txt/..\/..\/tmp\/log.txt/g" ./notify.py
 sed -i "s/.\/log.txt/..\/..\/tmp\/log.txt/g" ./index.py
 echo "开始安装腾讯ServerlessFramework"
-npm install -g serverless --registry=https://registry.npm.taobao.org
+npm install -g serverless
 echo "开始部署至腾讯云函数"
 sls deploy --debug
 
