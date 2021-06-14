@@ -111,6 +111,8 @@ def luckDraw_task():
             luck.encoding='utf-8'
             res = luck.json()
             logging.info('【天天抽奖】: ' + res['RspMsg'] + ' x' + str(i+1))
+            if res['Rsptype'] == '6666':
+                return
             #等待1秒钟
             time.sleep(5)
     except Exception as e:
@@ -196,6 +198,8 @@ def pointsLottery_task(n):
             payx.encoding = 'utf-8'
             res2 = payx.json()
             logging.info("【积分抽奖】: " + res2['RspMsg'] + ' x' + str(i+1))
+            if res2['Rsptype'] == '6666':
+                return
             #等待随机秒钟
             time.sleep(5)
     except Exception as e:
