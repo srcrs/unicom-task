@@ -48,7 +48,7 @@ exit
 
 ### 通过zip包
 
-1. 在[releases](http://github.com/srcrs/UnicomTask-docker/releases/latest)下载最新的unicom-tenscf.zip包
+1. 在[releases](http://github.com/srcrs/UnicomTask-docker/releases/latest)下载最新的unicomtask-tenscf.zip包
 
 2. 进入 [创建自定义云函数](https://console.cloud.tencent.com/scf/list-create?rid=1&ns=default&functionName=helloworld-1621082690&createType=empty)
 
