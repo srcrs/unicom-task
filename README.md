@@ -38,7 +38,7 @@ exit
 
 - npm install -g serverless
 
-- cd ./UnicomTask-docker/ten-scf
+- cd ./UnicomTask-docker/serverless/tencent-scf
 
 - sls deploy --debug
 
