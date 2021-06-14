@@ -1,6 +1,6 @@
 # !/usr/bin/bash
 
-cd root
+cd /root
 #复制出用户的信息
 cp ./UnicomTask-docker/config.json ./
 #删除原代码
