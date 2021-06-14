@@ -12,6 +12,8 @@ rm -rf ./UnicomTask-docker/
 git clone https://github.com/srcrs/UnicomTask-docker.git
 #删除原来的
 rm ./UnicomTask-docker/config.json
+rm ./UnicomTask-docker/start.sh
+rm ./UnicomTask-docker/pull.sh
 #将用户信息再复制到该目录
 cp ./config.json ./UnicomTask-docker/
 #复制脚本
