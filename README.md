@@ -53,10 +53,10 @@ exit
 2. 进入 [创建自定义云函数](https://console.cloud.tencent.com/scf/list-create?rid=1&ns=default&functionName=helloworld-1621082690&createType=empty)
 
 3. 必要配置
-  - (1) 函数代码 --> 选择本地上传zip包 --> 上传unicom-task_scf.zip
+  - (1) 函数代码 --> 选择本地上传zip包 --> 上传unicomtask-tenscf.zip
   - (2) 高级配置 --> 环境配置 --> 执行超时时间设置为 900
   - (3) 触发器配置 --> 自定义创建 --> 触发周期 --> 自定义出发周期 --> Cron表达式 --> `0 30 6 * * * *`
 
 4. 点击完成。最后，进入到刚才创建的云函数，找到config.json填写账号信息，点击测试，手动运行一次，如果能够正常运行就说明部署成功。
 
->注：最后一步在config.json填写账号信息，也可以先把unicom-task_scf.zip解压，待config.json信息完善后，再进行压缩。就不用在第4步完善测试了。
+>注：最后一步在config.json填写账号信息，也可以先把unicomtask-tenscf.zip解压，待config.json信息完善后，再进行压缩。就不用在第4步完善测试了。
