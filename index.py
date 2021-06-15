@@ -111,8 +111,6 @@ def luckDraw_task():
             luck.encoding='utf-8'
             res = luck.json()
             logging.info('【天天抽奖】: ' + res['RspMsg'] + ' x' + str(i+1))
-            if res['Rsptype'] == '6666':
-                return
             #等待1秒钟
             time.sleep(5)
     except Exception as e:
