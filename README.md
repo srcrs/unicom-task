@@ -15,9 +15,14 @@
 ## docker
 
 ```bash
+#拉取镜像
 docker pull srcrs/unicomtask
+#运行镜像->容器
 docker run -itd --name unicomtask srcrs/unicomtask
+#进入容器
 docker exec -it unicomtask bash
+#启动cron，默认是关闭状态
+service cron start
 cd root
 #将账户信息填写到 config.json
 vim config.json
