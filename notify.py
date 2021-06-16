@@ -126,6 +126,24 @@ def sendPushplus(token):
     except Exception as e:
         print('push+通知推送异常，原因为: ' + str(e))
         print(traceback.format_exc())
+        
+#发送serverchan通知
+def sendServerChan(SCKEY):
+    try:
+        #发送内容
+        data = {
+            "text": "UnicomTask每日报表",
+            "desp": readFile_html('./log.txt')
+        }
+        url = 'https://sc.ftqq.com/'+SCKEY+'.send'
+        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+        #body = json.dumps(data).encode(encoding='utf-8')
+        body = urlencode(data).encode(encoding='utf-8')
+        resp = requests.post(url, data=body, headers=headers)
+        print(resp)
+    except Exception as e:
+        print('serverchan通知推送异常，原因为: ' + str(e))
+        print(traceback.format_exc())
 
 #企业微信通知，普通微信可接收
 def sendWechat(wex):
