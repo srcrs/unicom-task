@@ -448,6 +448,8 @@ def main_handler(event, context):
             notify.sendTg(user['telegramBot'])
         if ('pushplusToken' in user) :
             notify.sendPushplus(user['pushplusToken'])
+        if ('serverchanSCKEY' in user) :
+            notify.sendServerChan(user['serverchanSCKEY'])
         if('enterpriseWechat' in user) :
             notify.sendWechat(user['enterpriseWechat'])
         if('IFTTT' in user) :
