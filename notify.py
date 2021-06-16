@@ -138,7 +138,7 @@ def sendServerChan(SCKEY):
         url = 'https://sc.ftqq.com/'+SCKEY+'.send'
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         #body = json.dumps(data).encode(encoding='utf-8')
-        body = urlencode(data).encode(encoding='utf-8')
+        body = urllib.parse.urlencode(data).encode(encoding='utf-8')
         resp = requests.post(url, data=body, headers=headers)
         print(resp)
     except Exception as e:
