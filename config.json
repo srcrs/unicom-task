@@ -5,8 +5,8 @@
         "appId": "appId（必填）",
         "email": "邮箱（选填，不填请删除此行）",
         "lotteryNum": "抽奖次数（选填，不填请删除此行）",
-        "mailwoCookies": "沃邮箱cookie",
-        "aptCookies": "话费购cookie",
+        "mailwoCookies": "沃邮箱cookie（选填，不填请删除此行）",
+        "aptCookies": "话费购cookie（选填，不填请删除此行）",
         "dingtalkWebhook": "钉钉通知 https://oapi.dingtalk.com/robot/send?access_token=xxxx（选填，不填请删除此行）",
         "Bark": {
             "Barkkey": "（选填，不填请删除 Bark 对象）",
