@@ -17,6 +17,11 @@ PhoneNo = None
 def daySign():
     try:
         url = 'https://club.mail.wo.cn/clubwebservice/club-user/user-sign/create'
+        url1 = 'https://club.mail.wo.cn/clubwebservice/growth/userSign'
+        url2 = 'https://club.mail.wo.cn/clubwebservice/growth/addIntegral?phoneNum='+PhoneNo+'&resourceType=huodong'
+        url3 = 'https://club.mail.wo.cn/clubwebservice/growth/addIntegral?phoneNum='+PhoneNo+'&resourceType=lookMail'
+        url4 = 'https://club.mail.wo.cn/clubwebservice/growth/addIntegral?phoneNum='+PhoneNo+'&resourceType=womenhuzhuye'
+        url5 = 'https://club.mail.wo.cn/clubwebservice/growth/addIntegral?phoneNum='+PhoneNo+'&resourceType=appxiazai'
         headers = {
                     'Cookie':Cookies,
                     'Content-Type': 'application/json;charset=utf-8',
@@ -34,6 +39,21 @@ def daySign():
         #resp = requests.get(url=url,params=params,headers=headers)
         
         res = requests.get(url=url,headers=headers)
+        logging.info('【每日签到】: ' + res)
+        
+        res = requests.get(url=url1,headers=headers)
+        logging.info('【每日签到】: ' + res)
+        
+        res = requests.get(url=url2,headers=headers)
+        logging.info('【每日签到】: ' + res)
+        
+        res = requests.get(url=url3,headers=headers)
+        logging.info('【每日签到】: ' + res)
+        
+        res = requests.get(url=url4,headers=headers)
+        logging.info('【每日签到】: ' + res)
+        
+        res = requests.get(url=url5,headers=headers)
         logging.info('【每日签到】: ' + res)
 
         if res['status'] == '0000':
