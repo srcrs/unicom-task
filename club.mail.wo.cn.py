@@ -34,24 +34,8 @@ def daySign():
         #resp = requests.get(url=url,params=params,headers=headers)
         
         res = requests.get(url=url,headers=headers)
-        
-        '''
-        #参考同类项目 HiCnUnicom 待明日验证是否能加倍成功
-        client.headers.update({'referer': 'https://img.client.10010.com/activitys/member/index.html'})
-        param = 'yw_code=&desmobile=' + username + '&version=android@$8.0100'
-        client.get('https://act.10010.com/SigninApp/signin/querySigninActivity.htm?' + param)
-        client.headers.update({'referer': 'https://act.10010.com/SigninApp/signin/querySigninActivity.htm?' + param})
-        daySign = client.post('https://act.10010.com/SigninApp/signin/daySign')
-        daySign.encoding='utf-8'
-        #本来是不想加这个的，但是会出现加倍失败的状况，暂时加上也是有可能出问题
-        client.post('https://act.10010.com/SigninApp/signin/todaySign')
-        client.post('https://act.10010.com/SigninApp/signin/addIntegralDA')
-        client.post('https://act.10010.com/SigninApp/signin/getContinuous')
-        client.post('https://act.10010.com/SigninApp/signin/getIntegral')
-        client.post('https://act.10010.com/SigninApp/signin/getGoldTotal')
-        client.headers.pop('referer')
-        res = daySign.json()
-        '''
+        logging.info('【每日签到】: ' + res)
+
         if res['status'] == '0000':
             logging.info('【每日签到】: ' + '打卡成功')
         elif res['status'] == '0002':
