@@ -70,7 +70,7 @@ def main_handler(event, context):
     for user in users:
         #清空上一个用户的日志记录
         open('./log.txt',mode='w',encoding='utf-8')
-        //
+        #开始任务
         global Cookies=user['Cookies']
         global PhoneNo=user['username']
         
