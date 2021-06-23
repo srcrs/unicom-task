@@ -10,6 +10,56 @@ import requests,json,time,re,login,logging,traceback,os,random,notify,datetime
 from lxml.html import fromstring
 import pytz
 
+Cookies = None
+PhoneNo = None
+
+#每日签到
+def daySign():
+    try:
+        url = 'https://club.mail.wo.cn/clubwebservice/club-user/user-sign/create'
+        headers = {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'Host: club.mail.wo.cn',
+                    'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+                    'Connection: keep-alive',
+                    'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.17(0x17001126) NetType/4G Language/zh_CN miniProgram',
+                  }
+        #params={"wd":"Python"}
+        
+        
+        #body = json.dumps(data).encode(encoding='utf-8')
+        #body = urllib.parse.urlencode(data).encode(encoding='utf-8')
+        #resp = requests.post(url, data=body, headers=headers)
+        #resp = requests.get(url=url,params=params,headers=headers)
+        
+        resp = requests.get(url=url,headers=headers)
+        
+        '''
+        #参考同类项目 HiCnUnicom 待明日验证是否能加倍成功
+        client.headers.update({'referer': 'https://img.client.10010.com/activitys/member/index.html'})
+        param = 'yw_code=&desmobile=' + username + '&version=android@$8.0100'
+        client.get('https://act.10010.com/SigninApp/signin/querySigninActivity.htm?' + param)
+        client.headers.update({'referer': 'https://act.10010.com/SigninApp/signin/querySigninActivity.htm?' + param})
+        daySign = client.post('https://act.10010.com/SigninApp/signin/daySign')
+        daySign.encoding='utf-8'
+        #本来是不想加这个的，但是会出现加倍失败的状况，暂时加上也是有可能出问题
+        client.post('https://act.10010.com/SigninApp/signin/todaySign')
+        client.post('https://act.10010.com/SigninApp/signin/addIntegralDA')
+        client.post('https://act.10010.com/SigninApp/signin/getContinuous')
+        client.post('https://act.10010.com/SigninApp/signin/getIntegral')
+        client.post('https://act.10010.com/SigninApp/signin/getGoldTotal')
+        client.headers.pop('referer')
+        res = daySign.json()
+        '''
+        if res['status'] == '0000':
+            logging.info('【每日签到】: ' + '打卡成功')
+        elif res['status'] == '0002':
+            logging.info('【每日签到】: ' + res['msg'])
+        time.sleep(1)
+    except Exception as e:
+        print(traceback.format_exc())
+        logging.error('【每日签到】: 错误，原因为: ' + str(e))
+
 def main_handler(event, context):
     users = readJson()
     for user in users:
@@ -17,6 +67,8 @@ def main_handler(event, context):
         open('./log.txt',mode='w',encoding='utf-8')
         //
         global Cookies=user['Cookies']
+        global PhoneNo=user['username']
+        
         if len(Cookies)>0:
           daySign()
           lottery()
