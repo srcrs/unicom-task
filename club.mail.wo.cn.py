@@ -18,6 +18,7 @@ def daySign():
     try:
         url = 'https://club.mail.wo.cn/clubwebservice/club-user/user-sign/create'
         headers = {
+                    'Cookie':Cookies,
                     'Content-Type': 'application/json;charset=utf-8',
                     'Host: club.mail.wo.cn',
                     'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -32,7 +33,7 @@ def daySign():
         #resp = requests.post(url, data=body, headers=headers)
         #resp = requests.get(url=url,params=params,headers=headers)
         
-        resp = requests.get(url=url,headers=headers)
+        res = requests.get(url=url,headers=headers)
         
         '''
         #参考同类项目 HiCnUnicom 待明日验证是否能加倍成功
