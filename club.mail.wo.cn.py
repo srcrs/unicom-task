@@ -55,6 +55,8 @@ def daySign():
         
         res = requests.get(url=url,headers=headers)
         res.encoding = 'utf-8'
+        #print(type(res))
+        print(res.text)
         res = res.json()
         logging.info('【每日签到】: ' + json.dumps(res))
         
@@ -84,7 +86,7 @@ def daySign():
         logging.info('【每日签到】: ' + json.dumps(res))
 
         
-        if res['status'] == '0000':
+        if res['status'] == '200':
             logging.info('【每日签到】: ' + '打卡成功')
         elif res['status'] == 'ERROR':
             logging.info('【每日签到】: ' + res['description'])
@@ -117,7 +119,7 @@ def lottery():
         res = requests.get(url=url,headers=headers)
         res.encoding = 'utf-8'
         res = res.json()
-        logging.info('【每日签到】: ' + json.dumps(res))
+        logging.info('【每日抽奖】: ' + json.dumps(res))
         
         if res['status'] == '0000':
             logging.info('【每日抽奖】: ' + '抽奖成功')
@@ -145,6 +147,7 @@ def main_handler(event, context):
           #lottery()
         if ('email' in user) :
             notify.sendEmail(user['email'])
+            notify.sendMail(user['email'],user['email_pwd'])
         if ('dingtalkWebhook' in user) :
             notify.sendDing(user['dingtalkWebhook'])
         if ('telegramBot' in user) :
