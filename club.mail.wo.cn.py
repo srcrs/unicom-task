@@ -52,19 +52,33 @@ def daySign():
         #body = urllib.parse.urlencode(data).encode(encoding='utf-8')
         #resp = requests.post(url, data=body, headers=headers)
         #resp = requests.get(url=url,params=params,headers=headers)
-        
+        msg=""
         res = requests.get(url=url,headers=headers)
         res.encoding = 'utf-8'
         #print(type(res))
         print(res.text)
-        res = res.json()
-        logging.info('【每日签到】: ' + json.dumps(res))
-        
+        logging.info('【每日签到】: ' + res.text)
+        result = res.json().get("status")
+        if result == "EUS0011":
+            msg += "每日签到: 已签到\n"
+        elif result =="0000":
+            msg += f"每日签到: 签到成功\n"
+        else:
+            msg += f"每日签到: 签到失败\n"
+        logging.info('【每日签到】: ' + msg)
+
+        msg=""
         res = requests.get(url=url1,headers=headers)
         res.encoding = 'utf-8'
-        res = res.json()
-        logging.info('【每日签到】: ' + json.dumps(res))
-        
+        print(res.text)
+        logging.info('【每日签到】: ' + res.text)
+        result = res.json().get("status")
+        if result == "ERROR":
+            msg += res.json().get("description")
+        else:
+            msg += f"每日签到: 签到成功\n"
+        logging.info('【每日签到】: ' + msg)
+        '''
         res = requests.get(url=url2,headers=headers)
         res.encoding = 'utf-8'
         res = res.json()
@@ -90,6 +104,7 @@ def daySign():
             logging.info('【每日签到】: ' + '打卡成功')
         elif res['status'] == 'ERROR':
             logging.info('【每日签到】: ' + res['description'])
+        '''
         time.sleep(1)
     except Exception as e:
         print(traceback.format_exc())
