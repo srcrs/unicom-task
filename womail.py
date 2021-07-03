@@ -133,7 +133,7 @@ def main_handler(event, context):
             WoMailCheckIn(womail_url)
         if ('email' in user) :
             notify.sendEmail(user['email'])
-            notify.sendMail(user['email'],user['email_pwd'])
+            notify.sendMail(user['email'],user['wo_email'],user['wo_email_pwd'])
         if ('dingtalkWebhook' in user) :
             notify.sendDing(user['dingtalkWebhook'])
         if ('telegramBot' in user) :

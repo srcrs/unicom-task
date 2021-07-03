@@ -71,7 +71,7 @@ def sendEmail(email):
         print(traceback.format_exc())
 
 #邮件推送
-def sendMail(email,passwd):
+def sendMail(email,wo_mail,wo_mail_passwd):
     try:
         #要发送邮件内容
         content = readFile('./log.txt')
@@ -82,10 +82,10 @@ def sendMail(email,passwd):
 
         mailserver='smtp.wo.cn'   #邮件服务器
         port=25                   #端口
-        sender=email            #发件人，用户
+        sender=wo_mail            #发件人，用户
 
         server = smtplib.SMTP(mailserver, port)  # 发件人邮箱中的SMTP服务器，端口是25
-        server.login(sender, passwd)  # 发件人邮箱账号、邮箱授权码
+        server.login(sender, wo_mail_passwd)  # 发件人邮箱账号、邮箱授权码
         msg = MIMEMultipart('mixed')
         msg['From'] = Header(sender)
         msg['To'] = Header(receivers)
