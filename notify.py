@@ -5,6 +5,13 @@
 
 import smtplib,traceback,os,requests,urllib,json
 from email.mime.text import MIMEText
+import smtplib
+from email import encoders
+from email.header import Header
+from email.mime.text import MIMEText
+from email.utils import parseaddr,formataddr
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
 
 #返回要推送的通知内容
 #对markdown的适配要更好
@@ -59,6 +66,38 @@ def sendEmail(email):
             print('email push BER')
             #这里不知道为什么，在很多情况下返回的不是 json，
             # 但在测试过程中成功率极高,因此直接输出
+    except Exception as e:
+        print('邮件推送异常，原因为: ' + str(e))
+        print(traceback.format_exc())
+
+#邮件推送
+def sendMail(email,wo_mail,wo_mail_passwd):
+    try:
+        #要发送邮件内容
+        content = readFile('./log.txt')
+        #接收方邮箱
+        receivers = email
+        #邮件主题
+        subject = 'UnicomTask每日报表'
+
+        mailserver='smtp.wo.cn'   #邮件服务器
+        port=25                   #端口
+        sender=wo_mail            #发件人，用户
+
+        server = smtplib.SMTP(mailserver, port)  # 发件人邮箱中的SMTP服务器，端口是25
+        server.login(sender, wo_mail_passwd)  # 发件人邮箱账号、邮箱授权码
+        msg = MIMEMultipart('mixed')
+        msg['From'] = Header(sender)
+        msg['To'] = Header(receivers)
+        msg['subject'] = Header(subject, 'utf-8')
+        body = MIMEText(content, 'plain', 'utf-8')
+        msg.attach(body)
+        # msg.as_string()中as_string()是将msg(MIMEText或MIMEMultipart对象)变为str。
+        errmsg=server.sendmail(sender, receivers, msg.as_string())
+        #print(errmsg)
+        server.quit()
+        print('邮件推送成功')
+
     except Exception as e:
         print('邮件推送异常，原因为: ' + str(e))
         print(traceback.format_exc())
@@ -125,6 +164,24 @@ def sendPushplus(token):
         print(resp)
     except Exception as e:
         print('push+通知推送异常，原因为: ' + str(e))
+        print(traceback.format_exc())
+        
+#发送serverchan通知
+def sendServerChan(SCKEY):
+    try:
+        #发送内容
+        data = {
+            "text": "UnicomTask每日报表",
+            "desp": readFile_html('./log.txt')
+        }
+        url = 'https://sc.ftqq.com/'+SCKEY+'.send'
+        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+        #body = json.dumps(data).encode(encoding='utf-8')
+        body = urllib.parse.urlencode(data).encode(encoding='utf-8')
+        resp = requests.post(url, data=body, headers=headers)
+        print(resp)
+    except Exception as e:
+        print('serverchan通知推送异常，原因为: ' + str(e))
         print(traceback.format_exc())
 
 #企业微信通知，普通微信可接收
