@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+  unicom-task:
+    image: srcrs/unicom-task:latest
+    working_dir: /root
+    restart: always
+    command:
+      - /bin/bash
+      - -c
+      - |
+         service cron start
+         sleep infinity
+    volumes:
+      - $PWD/config/config.json:/root/config.json
