@@ -8,25 +8,32 @@
 - 积分抽奖，每天最多抽30次(中奖几率渺茫)
 - 冬奥积分活动(第1和7天，可领取600定向积分，其余领取300定向积分,有效期至下月底)
 - 获取每日1G流量日包(截止日期暂时不知道)
+- 增加沃邮箱签到，连续签到可获得话费奖励（需绑定沃邮箱公众号）
 - 邮件、钉钉、Tg、企业微信等推送运行结果
 
 # 使用方法
 
 ## docker
 
+在当前文件夹创建config.json，用于存储账户信息。
+
 ```bash
-#拉取镜像
-docker pull srcrs/unicomtask
-#运行镜像->容器
-docker run -itd --name unicomtask srcrs/unicomtask
-#进入容器
-docker exec -it unicomtask bash
-#启动cron，默认是关闭状态
-service cron start
-cd root
-#将账户信息填写到 config.json
-vim config.json
-exit
+#步骤1
+docker run -itd \
+  -v $PWD/config.json:/root/config.json \
+  --name unicom-task \
+  --restart always \
+  srcrs/unicom-task
+#步骤2
+docker exec unicom-task /bin/bash -c 'service cron start'
+```
+
+## docker-compose
+
+更改unicom-task/config/config.json
+
+```bash
+docker-compose up -d
 ```
 
 完成上述操作后，容器中每天会自动跑两个脚本，一个会在6:30的时候自动执行任务，一个会在5:00自动更新最新代码。
