@@ -1,12 +1,12 @@
 FROM python:alpine
 COPY docker-entrypoint.sh /
-ARG SCRIPT_URL=https://github.com/lhx11187/UnicomTask-docker.git
+ARG SCRIPT_URL=https://github.com/srcrs/unicom-docker.git
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     LANG=zh_CN.UTF-8 \
     PS1="\u@\h:\w\$ " \
     TZ=Asia/Shanghai \
     SCRIPT_BRANCH=main \
-    SCRIPT_DIR=/UnicomTask
+    SCRIPT_DIR=/unicom-task
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update -f \
     && apk upgrade \
@@ -18,7 +18,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                              libxslt-dev \
                              libxml2-dev \
     && git clone -b ${SCRIPT_BRANCH} ${SCRIPT_URL} ${SCRIPT_DIR} \
-    &&  pip install --no-cache-dir -r ${SCRIPT_DIR}/requirements.txt \
+    && pip3 install --no-cache-dir -r ${SCRIPT_DIR}/requirements.txt \
     && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone \
     && rm -rf /var/cache/* \

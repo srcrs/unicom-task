@@ -1,4 +1,2 @@
-#40 9,20 * * * cd ${SCRIPT_DIR} && cat /config/config.json > config.json && python main.py
-40 7,17 * * * cd ${SCRIPT_DIR} && cat /config/config.json > config.json && python index.py
-50 7,17 * * * cd ${SCRIPT_DIR} && cat /config/config.json > config.json && python womail.py
+30 6,17 * * * cd ${SCRIPT_DIR} && cat /config/config.json > config.json && python3 index.py
 0 23 * * * cd ${SCRIPT_DIR} && git fetch --all && git reset --hard origin/${SCRIPT_BRANCH}
