@@ -5,7 +5,7 @@
         "appId": "appId（必填）",
         "email": "接收邮箱（选填，不填请删除此行）",
         "lotteryNum": "抽奖次数（选填，不填请删除此行）",
-		"woEmail": "沃邮箱俱乐部登陆Url",
+        "woEmail": "沃邮箱俱乐部登陆Url",
         "dingtalkWebhook": "钉钉通知 https://oapi.dingtalk.com/robot/send?access_token=xxxx（选填，不填请删除此行）",
         "Bark": {
             "Barkkey": "（选填，不填请删除 Bark 对象）",
