@@ -1,2 +1,2 @@
-30 6,17 * * * cd ${SCRIPT_DIR} && cat /config/config.json > config.json && python3 index.py
+30 6,17 * * * cd ${SCRIPT_DIR} && cat /config/config.json > config/config.json && python3 index.py
 0 23 * * * cd ${SCRIPT_DIR} && git fetch --all && git reset --hard origin/${SCRIPT_BRANCH}
