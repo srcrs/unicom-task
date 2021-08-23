@@ -24,7 +24,7 @@
         },
         "IFTTT": {
             "apiKey": "IFTTT Webhook key（选填，不填请删除 IFTTT 对象）",
-            "eventName": "unicom_task（选填，不填请删除 IFTTT 对象）（选填，不填请删除 IFTTT 对象）",
+            "eventName": "unicom_task（选填，不填请删除 IFTTT 对象）",
             "subjectKey": "比如value1（选填，不填请删除 IFTTT 对象）",
             "contentKey": "比如value2（选填，不填请删除 IFTTT 对象）"
         },
