@@ -3,12 +3,17 @@ echo "开始拷贝必要文件"
 cp login.py ./serverless
 cp index.py ./serverless
 cp notify.py ./serverless
+cp util.py ./serverless
 cp requirements.txt ./serverless
-cp config.json ./serverless
+cp -rfv config ./serverless
+cp -rfv task ./serverless
+
 cd ./serverless
 
 #删除lxml默认模块版本，使用自定义模块
 echo "开始安装所需模块"
+pip3 install pip -U
+pip3 install setuptools -U
 sed -i '/lxml==4.6.2/d' ./requirements.txt
 #解压lxml
 unzip lxml.zip
@@ -32,6 +37,8 @@ echo "清空所拷贝的代码"
 rm -f ./login.py
 rm -f ./index.py
 rm -f ./notify.py
+rm -f ./util.py
 rm -f ./requirements.txt
-rm -f ./config.json
+rm -rfv ./config
+rm -rfv ./task
 exit 0
