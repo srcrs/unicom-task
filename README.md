@@ -46,7 +46,7 @@ docker-compose up -d
 
 需要本地具备npm环境
 
-- git clone https://github.com/srcrs/UnicomTask-docker.git
+- git clone https://github.com/srcrs/unicom-task.git
 
 - npm install -g serverless
 
@@ -57,6 +57,7 @@ docker-compose up -d
 - 微信扫码登陆
 
 - 进入到unicom-Task容器中，在config.json填写账号信息，点击测试，手动运行一次，如果能够正常运行就说明部署成功。
+
 
 ### 通过zip包
 
@@ -70,5 +71,32 @@ docker-compose up -d
   - (3) 触发器配置 --> 自定义创建 --> 触发周期 --> 自定义出发周期 --> Cron表达式 --> `0 30 6 * * * *`
 
 4. 点击完成。最后，进入到刚才创建的云函数，找到config.json填写账号信息，点击测试，手动运行一次，如果能够正常运行就说明部署成功。
-
 >注：最后一步在config.json填写账号信息，也可以先把unicomtask-tenscf.zip解压，待config.json信息完善后，再进行压缩。就不用在第4步完善测试了。
+
+### 通过脚本一键部署
+需要本地具备 npm 环境
+- Clone 本项目
+ ```git clone https://github.com/srcrs/unicom-task.git```
+- 进入该项目
+ ```cd unicom-task```
+- 修改 ```config``` 文件夹中的 ```config.conf``` 为你的账号信息
+```
+[
+    {
+        "username": "1390000000",
+        "password": "000000",
+        "appId": "00000000000000000"
+    },
+    {
+        "username": "13333333333",
+        "password": "000000",
+        "appId": "00000000000000000"
+    }
+]
+```
+- 赋予脚本可执行权限
+ ```chmod +x ./serverless/local_deploy.sh```
+- 运行脚本 
+  ```./serverless/local_deploy.sh```
+- 扫码或网页登录腾讯云
+- 完成部署
