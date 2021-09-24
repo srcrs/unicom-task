@@ -20,7 +20,7 @@ class email_task:
             url = "https://nyan.mail.wo.cn/cn/sign/user/doTask.do?rand=0.8776674762904109"
             data_params = {
                 "沃邮箱每日首次登录": {"taskName": "loginmail"},
-                "暑期好礼，精彩一夏": {"taskName": "clubactivity"},
+                "浅秋领福利": {"taskName": "clubactivity"},
                 "下载沃邮箱app": {"taskName": "download"},
                 "去用户俱乐部逛一逛": {"taskName": "club"},
             }
