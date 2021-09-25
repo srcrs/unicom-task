@@ -54,7 +54,7 @@ def main_handler(event, context):
     users = readJson()
     for user in users:
         #清空上一个用户的日志记录
-        open('./log.txt',mode='w',encoding='utf-8')
+        open('/tmp/log.txt',mode='w',encoding='utf-8')
         global client
         client = login.login(user['username'],user['password'],user['appId'])
         #获取账户信息
