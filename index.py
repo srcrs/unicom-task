@@ -48,6 +48,8 @@ def sendNotice(user):
         notify.sendIFTTT(user['IFTTT'])
     if('Bark' in user) :
         notify.sendBark(user['Bark'])
+    if "larkWebhook" in user:
+        notify.send_lark(user["larkWebhook"])
 
 #腾讯云函数入口
 def main_handler(event, context):
