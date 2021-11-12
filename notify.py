@@ -236,3 +236,25 @@ def sendBark(Bark):
     resp = session.post(url, json = data, headers = headers)
     state=json.loads(resp.text)
     print(state)
+
+
+def send_lark(webhook):
+    """飞书自定义机器人消息推送"""
+    content = readFile_text("./log.txt")
+    data = {
+        "msg_type": "post",
+        "content": {
+            "post": {
+                "zh_cn": {
+                    "title": "UnicomTask每日报表",
+                    "content": [
+                        [{
+                            "tag": "text",
+                            "text": content
+                        }]
+                    ]
+                }
+            }
+        }
+    }
+    resp = requests.post(webhook, json=data)
