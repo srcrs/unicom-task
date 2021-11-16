@@ -20,8 +20,7 @@ class email_task:
             url = "https://nyan.mail.wo.cn/cn/sign/user/doTask.do?rand=0.8776674762904109"
             data_params = {
                 "沃邮箱每日首次登录": {"taskName": "loginmail"},
-                "浅秋领福利": {"taskName": "clubactivity"},
-                "下载沃邮箱app": {"taskName": "download"},
+                "暖心初冬送好礼": {"taskName": "clubactivity"},
                 "去用户俱乐部逛一逛": {"taskName": "club"},
             }
             for key, data in dict.items(data_params):
