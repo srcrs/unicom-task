@@ -21,6 +21,7 @@ class email_task:
             data_params = {
                 "沃邮箱每日首次登录": {"taskName": "loginmail"},
                 "暖心初冬送好礼": {"taskName": "clubactivity"},
+                "下载沃邮箱app": {"taskName": "download"},
                 "去用户俱乐部逛一逛": {"taskName": "club"},
             }
             for key, data in dict.items(data_params):
